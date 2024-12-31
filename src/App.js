@@ -21,13 +21,23 @@ function App() {
       setAlert(null);
     }, 1500);
   }
+  const removeBodyClasses = ()=>{
+    document.body.classList.remove('bg-light');
+    document.body.classList.remove('bg-dark');
+    document.body.classList.remove('bg-primary');
+    document.body.classList.remove('bg-danger');
+    document.body.classList.remove('bg-warning');
+    document.body.classList.remove('bg-success');
+  }
 
-  const toggleMode = () => {
+  const toggleMode = (cls) => {
+    removeBodyClasses();
+    document.body.classList.add('bg-' + cls);
     if (mode === 'light') {
       setMode('dark')
       document.body.style.backgroundColor = '#173b5f'
       showAlert("Dark mode has been enabled.", "success")
-      document.title = 'TextUtils - Dark mode';
+      // document.title = 'TextUtils - Dark mode';
       setInterval(() => {
         document.title = 'TextUtils is Amazing!'
       }, 2000);
@@ -39,7 +49,7 @@ function App() {
       setMode('light')
       document.body.style.backgroundColor = 'white'
       showAlert("Light mode has been enabled.", "success")
-      document.title = 'TextUtils - Light mode';
+      // document.title = 'TextUtils - Light mode';
     }
   }  
   return (
